@@ -1,0 +1,75 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: linear-gradient(
+    181deg,
+    rgb(2, 0, 97) 15%,
+    rgb(97, 149, 219) 158.5%
+  );
+  height: 100vh;
+}
+.back {
+  border: none;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 20px;
+  background-color: #31304d;
+  color: #f0ece5;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+.back i {
+  padding: 0 5px;
+}
+button:hover {
+  background-color: rgb(79, 78, 78);
+}
+.container {
+  display: block;
+  /* margin: 10px auto; */
+}
+.container h1 {
+  text-align: center;
+  text-decoration: none;
+}
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+.card_container .card{
+  border-radius: 20px;
+  padding: 0 20px;
+  line-height: 1;
+  background: radial-gradient(circle at 10% 20%, rgb(215, 223, 252) 0%, rgb(255, 255, 255) 0%, rgb(215, 223, 252) 84%);
+}
+.container h1 {
+  font-size: 43px;
+  text-align: center;
+  background: #7cb9e8;
+  font-weight: 600;
+  padding-bottom: 5px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.btns{
+    display: flex;
+}
+.card-body a{
+    background-color: #31304d;
+    color: #f0ece5;
+    padding: 12px;
+    display: block;
+    text-align: center;
+    width: 100px;
+    border: 1px solid white;
+    margin: 5px auto;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 13px;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Songs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background: linear-gradient(
+          179.4deg,
+          rgb(12, 20, 69) -16.9%,
+          rgb(71, 30, 84) 119.9%
+        );
+        height: 100vh;
+      }
+
+      button:hover {
+       background-color: rgb(79, 78, 78);
+      }
+     h1 {
+        text-align: center;
+        font-size: 72px;
+        font-weight: 700;
+        background: -webkit-linear-gradient(#ede3e3, #1c066e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: drop 1.2s forwards ease;
+      }
+      .flash-message {
+    background-color: #ffd966; /* Highlighted */
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  .flash-message-container {
+    text-align: center;
+    margin-top: 10px;
+  }
+  </style>
+</head>
+ <div class="flash-message-container">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="flash-message">
+          <b>{{ message }}</b>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
+<body>
+    <div class="container">
+        <a href="{{ url_for('index') }}"><button>BACK</button></a>
+
+        <h1>Songs</h1>
+        <div class="row">
+            {% if items %}
+                {% for song_id, song_details in items.items() %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename=song_details[1]+'.jpg') }}" class="card-img-top" alt="Song Picture">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ song_details[0] }}</h5>
+                                <p class="card-text">Album: {{ song_details[3] }}</p>
+                                <audio controls>
+                                    <source src="../static/{{ song_details[2] }}.mp3" type="audio/mp3">
+                                </audio>
+                                <a href="{{url_for('remove_song',song_id=song_id)}}" class="btn btn-danger">Remove from Favorites</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No added favourite songs.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

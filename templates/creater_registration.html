@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>creater registartion</title>
+    <style>
+        body {
+        
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: linear-gradient(
+            179.4deg,
+            rgb(12, 20, 69) -16.9%,
+            rgb(71, 30, 84) 119.9%
+            );
+            height: 100vh;
+        }
+    .cregistration-container{
+            border: 2px solid white;
+            width: 300px;
+            display: block;
+            margin: 20px auto;
+            border-radius: 20px;
+            padding: 23px 44px;
+            animation: fade 0.6s 1 linear;
+    }
+  .registration-container input[type="text"],
+  .registration-container input[type="email"],
+  .registration-container input[type="password"]{
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+    /* .back{
+            border: none;
+            padding: 5px 10px;
+            outline: none;
+            cursor: pointer;
+            font-weight: 600;
+            margin: 20px;
+            background-color: #31304d;
+            color: #f0ece5;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+    }
+    .back i {
+        padding: 0 5px;
+    }
+    .back:hover {
+        background-color: rgb(79, 78, 78);
+    } */
+    h3 {
+        font-size: 43px;
+        text-align: center;
+        background: -webkit-linear-gradient(#eee, #333);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: aliceblue;
+    }
+    .form input{
+            width: 400px     ;
+            height: 30px;
+            margin-bottom: 40px;
+            margin-top: 10px;
+            padding: 10px;
+            display: block;
+            border-radius: 9px ;
+            background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);
+            color: aliceblue;
+            transition: all 0.4s ease;
+    }
+    .form input:focus{
+        box-shadow: 2px 2px 3px 5px purple;
+    }
+    button{
+        display: block;
+        margin: 10px auto;
+        padding: 5px 10px;
+        background-color: rgb(85, 30, 136);
+        border: 2px solid white;
+        border-radius: 5px;
+        color: aliceblue;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    button:hover{
+        background-color: purple;
+    }
+    .cregistration-container a{
+        text-decoration: none;
+        text-align: center;
+        color: aqua;
+        margin-top: 10px;
+    }
+    
+  .cregistration-container label {
+    color:aqua;
+  }
+  
+  .cregistration-container h2 {
+    text-align: center;
+    color: hsl(38, 45%, 62%);
+  }
+
+  .flash-message {
+    background-color:transparent; /* Highlighted */
+    color: white; /* Change text color if needed */
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  
+
+     
+    @keyframes fade {
+        from{
+        transform: translateY(-30px);
+        opacity: 0;
+        }
+        to{
+        transform: translateY(0);
+        opacity: 1;
+        }
+    }
+  </style>
+</head>
+<div class="flash-message-container">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="flash-message">
+       {% for message in messages %}
+       <center><b>{{ message }}</b></center><br></br.>
+       {% endfor %}
+   </div>
+  {% endif %}
+  {% endwith %}
+  </div>
+<body>
+    <h3>Creater registration</h3>
+    <div class="cregistration-container">
+       
+        <form method="POST">
+            <label>username:</label><br>
+            <input type="text" name="username" placeholder="enter usename combination of text, special charaters,numbers" required><br>
+            <label>email:</label><br>
+            <input type="email" name="email" placeholder="enter email" required><br>
+            <label>password:</label><br>
+            <input type="password" name="password" placeholder="enter password" required><br>
+            <button type="submit">sign up</button>
+        </form> 
+        <div> 
+          <a href="{{url_for('ulogin')}}"> Already have an account?</a>
+          <a href="{{url_for('index')}}"><button>BACK</button></a>
+        </div>
+    </div>
+
+</body>
+</html>

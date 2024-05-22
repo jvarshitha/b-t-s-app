@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(
+    179.4deg,
+    rgb(12, 20, 69) -16.9%,
+    rgb(71, 30, 84) 119.9%
+  );
+  color: aliceblue;
+  height: 100vh;
+}
+
+.back {
+  border: none;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 20px;
+  background-color: #31304d;
+  color: #f0ece5;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+.back i {
+  padding: 0 5px;
+}
+
+.mycontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fade 1.2s 1 forwards ease;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+img {
+  width: 300px;
+  height: 400px;
+  border-radius: 12px;
+  object-fit: cover;
+  animation: drop 1.2s 1 forwards ease;
+}
+
+.Fav_btn {
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  border: 2px solid black;
+  width: fit-content;
+  margin: 10px auto;
+  padding: 9px;
+  border-radius: 8px;
+  background-color: aquamarine;
+  color: black;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.Fav_btn:hover {
+  transform: scale(1.1);
+  background-color: rgb(94, 211, 211);
+}
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background-clip: border-box;
+}
+.card-body {
+  font-size: 15px;
+  /* display: inline-block; */
+}
+.card-body h5 {
+  font-size: 20px;
+  padding: 0;
+  line-height: 1;
+}
+
+audio {
+  margin: 20px 10px;
+  color: #31304d;
+}
+.btn {
+  outline: none;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  font-size: 17px;
+}
+.btn i {
+  cursor: pointer;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes drop {
+    from{
+        transform: translateY(-70px);
+    }
+    to{
+        transform: translateY(0);
+    }
+    
+}

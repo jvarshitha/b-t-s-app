@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHSCpHY7hQfGvAsSZcRPR_-CR0nT8-AH7Fng&s');
+            background-size: cover;
+            background-position: center;
+            color: rgb(146, 9, 9);
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            text-align: center;
+            padding-top: 20px; /* Adjust as needed */
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 30px;
+            display: block;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #FF5E3A;
+            color: #340662;
+            padding: 10px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: hsl(0, 89%, 17%);
+
+        }
+        .container {
+            padding: 20px;
+        } 
+    </style>
+</head>
+<body>
+   
+    <div class="container">
+        <h1><center>Welcome to B-T-S Music Website</center></h1>
+        <p><cenetr>Best-Tuned-Songs</cenetr></p>
+        <p><cenetr>Discover the latest tracks, albums, and artists.</cenetr></p>
+        <a href="{{url_for('index')}}" class="btn">Browse Music</a> 
+    </div>
+</body>
+</html>

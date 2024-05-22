@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>play the song</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+ .card-body{
+    margin-left: 70px;
+} 
+        body {
+         margin: 0;
+         padding: 0;
+         background: linear-gradient(
+         179.4deg,
+         rgb(12, 20, 69) -16.9%,
+         rgb(71, 30, 84) 119.9%
+         );
+         color: aliceblue;
+         height: 100vh;
+}
+
+/* .back {
+  border: none;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 20px;
+  background-color: #31304d;
+  color: #f0ece5;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+.back i {
+  padding: 0 5px;
+} */
+
+.mycontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fade 1.2s 1 forwards ease;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+img {
+  width: 300px;
+  height: 400px;
+  border-radius: 12px;
+  object-fit: cover;
+  animation: drop 1.2s 1 forwards ease;
+}
+
+.btn {
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  border: 2px solid black;
+  width: fit-content;
+  margin: 10px auto;
+  padding: 9px;
+  border-radius: 8px;
+  background-color: aquamarine;
+  color: black;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  transform: scale(1.1);
+  background-color: rgb(94, 211, 211);
+}
+
+audio {
+  margin: 20px 10px;
+  color: #31304d;
+}
+.form input{
+    width: 400px;
+    height: 30px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    padding: 10px;
+    display: block;
+    border-radius: 9px ;
+    background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);
+    color: aliceblue;
+    transition: all 0.4s ease;
+  }
+.form input:focus{
+    box-shadow: 2px 2px 3px 5px purple;
+  }
+/* .btn {
+  outline: none;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: white;
+  font-size: 17px;
+}
+.btn i {
+  cursor: pointer;
+} */
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes drop {
+    from{
+        transform: translateY(-70px);
+    }
+    to{
+        transform: translateY(0);
+    }
+    
+}
+       
+    </style>
+
+</head>
+<div class="flash-message-container">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <div class="flash-message">
+       {% for message in messages %}
+       <center><b>{{ message }}</b></center><br></br.>
+       {% endfor %}
+   </div>
+ {% endif %}
+ {% endwith %}
+</div>
+
+<body>
+    <a href="{{ url_for('index') }}"><button><i class="fa-solid fa-circle-arrow-left"></i></button></a>
+    <div class="container">
+        <h1>Song</h1>
+        <div class="row">
+            {% if song %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename=song[3]+'.jpg') }}" class="card-img-top" alt="Song Picture"><br>
+                        <a href="{{ url_for('add_to_favourites', song_id=song[0],name=song[1],pic=song[3],audio=song[2],album=song[6])}}" class="btn btn-primary">Add to Favorites</a>
+                    </div>
+                </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ song[1] }}</h5>
+                            <p class="card-text">Director Name: {{ song[7] }}</p>
+                            <p class="card-text">Artist 1: {{ song[4] }}</p>
+                            <p class="card-text">Artist 2: {{ song[5] }}</p> <!-- Modify this line to display artist2 -->
+                            <p class="card-text">Singer 1: {{ song[8] }}</p>
+                            {% if song[9] is not none %}
+                                <p class="card-text">Singer 2: {{ song[9] }}</p> <!-- Modify this line to display singer2 -->
+                            {% endif %}
+                            <p class="card-text">Album: {{ song[6] }}</p>
+                            <p class="card-text">Release Year: {{ song[10] }}</p>
+                            <p class="card-text">Uploaded Date: {{ song[11] }}</p>
+                            <p class="card-text">Likes: {{ count }}</p>
+                            <p class="card-text">Mood: {{ song[13] }}</p>
+                            <!-- Like/Unlike Form -->
+                            
+                            {% if lcount %}
+                                <form action="{{ url_for('like_song', song_id=song[0]) }}" method="POST">
+                                    <input type="hidden" name="unlike" value="true">
+                                    <input type="hidden" name="song_id" value="{{ song[0] }}">
+                                    <button type="submit" class="btn btn-link">
+                                        <i class="fas fa-heart text-danger"></i> Unlike
+                                    </button>
+                                </form>
+                            {% else %}
+                                <form action="{{ url_for('like_song', song_id=song[0]) }}" method="POST">
+                                    <input type="hidden" name="unlike" value="false">
+                                    <input type="hidden" name="song_id" value="{{ song[0] }}">
+                                    <button type="submit" class="btn btn-link">
+                                        <i class="far fa-heart"></i> Like
+                                    </button>
+                                </form>
+                            {% endif %}
+
+                            
+                            <!-- End Like/Unlike Form -->
+                            <audio controls>
+                                <source src="{{ url_for('static', filename=song[2]+'.mp3') }}" type="audio/mp3">
+                            </audio>
+                        </div>
+                
+
+            {% else %}
+                <p>No song found.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

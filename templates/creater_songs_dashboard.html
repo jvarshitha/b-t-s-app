@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Songs Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background: linear-gradient(
+            181deg,
+            rgb(2, 0, 97) 15%,
+            rgb(97, 149, 219) 158.5%
+        );
+        height: 100vh;
+        }
+.back {
+  border: none;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  margin: 20px;
+  background-color: #31304d;
+  color: #f0ece5;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+.back i {
+  padding: 0 5px;
+}
+button:hover {
+  background-color: rgb(79, 78, 78);
+  margin-left: 10px;
+}
+.container {
+  display: block;
+  /* margin: 10px auto; */
+}
+.container h1 {
+  text-align: center;
+  text-decoration: none;
+}
+.row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+.card_container .card{
+  border-radius: 20px;
+  padding: 0 20px;
+  line-height: 1;
+  background: radial-gradient(circle at 10% 20%, rgb(215, 223, 252) 0%, rgb(255, 255, 255) 0%, rgb(215, 223, 252) 84%);
+}
+.container h1 {
+  font-size: 43px;
+  text-align: center;
+  background: #7cb9e8;
+  font-weight: 600;
+  padding-bottom: 5px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.btns{
+    display: flex;
+}
+.card-body a{
+    background-color: #31304d;
+    color: #f0ece5;
+    padding: 12px;
+    display: block;
+    text-align: center;
+    width: 100px;
+    border: 1px solid white;
+    margin: 5px auto;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 13px;
+}
+    </style>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <center><b>{{ message }}</b></center>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+<body>
+    <div class="container">
+        <a href="{{ url_for('creater_all_songs') }}"><button>BACK</button></a>
+        <h1>Creator Songs Dashboard</h1>
+        <div class="row">
+            {% if song %}
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="{{ url_for('static', filename=song[3]+'.jpg') }}" class="card-img-top" alt="Song Picture">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ song[1] }}</h5>
+                            <p class="card-text">Director Name: {{ song[7] }}</p>
+                            <p class="card-text">Artist 1: {{ song[4] }}</p>
+                            <p class="card-text">Artist 2: {{ song[5] }}</p> <!-- Modify this line to display artist2 -->
+                            <p class="card-text">Singer 1: {{ song[8] }}</p>
+                            {% if song[9] is not none %}
+                                <p class="card-text">Singer 2: {{ song[9] }}</p> <!-- Modify this line to display singer2 -->
+                            {% endif %}
+                            <p class="card-text">Album: {{ song[6] }}</p>
+                            <p class="card-text">Release Year: {{ song[10] }}</p>
+                            <p class="card-text">Uploaded Date: {{ song[11] }}</p>
+                            <p class="card-text">Likes: {{ count }}</p>
+                            <p class="card-text">Mood : {{ song[13]}}
+                            </p>
+                            <audio controls>
+                                <source src="{{ url_for('static', filename=song[2]+'.mp3') }}" type="audio/mp3">
+                            </audio>
+                            <a href="{{ url_for('updatesong', song_id=song[0]) }}" class="btn btn-primary">Update</a>
+                            <a href="{{ url_for('delete_song', song_id=song[0]) }}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this song?');">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <p>No song found.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

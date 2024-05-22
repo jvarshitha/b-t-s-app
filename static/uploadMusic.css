@@ -1,0 +1,104 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.add-new-section {
+    margin-top: 10px;
+    float: right;
+    width: 20%; /* Adjust width as needed */
+}
+
+/* Additional styles to clear floats */
+.form-group:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.back {
+    border: none;
+    padding: 5px 10px;
+    outline: none;
+    cursor: pointer;
+    font-weight: 600;
+    margin: 20px;
+    background-color: #31304d;
+    color: #f0ece5;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+    display: inline;
+  }
+  .back i {
+    padding: 0 5px;
+  }
+  button:hover {
+    background-color: rgb(79, 78, 78);
+  }
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(109.6deg, rgb(49, 46, 46) 11.2%, rgb(11, 132, 145) 91.1%);   
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+#data_submit{
+  background-color: rgb(117, 45, 45);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+#data_submit:hover{
+    background-color: red;
+}
+.container {
+    max-width: fit-content;
+    margin: 50px auto;
+    background-color: rgba(0, 0, 0, 0.7); /* Transparency for the form */
+    padding: 10px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="file"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: rgba(209, 202, 202, 0.9); /* Transparency for input fields */
+}
+
+button[type="button"]
+{
+    padding: 10px;
+    width: 130px;
+    border: none;
+    font-size: 12px;
+    border-radius: 5px;
+    background-color: aquamarine;
+    color: black;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+button:hover {
+    background-color: #0056b3;
+}
+
+input[type="checkbox"]{
+    padding: 0 15px;
+}
+.mood_box{
+    margin-bottom: 10px;
+    margin-left: 15px;
+}
